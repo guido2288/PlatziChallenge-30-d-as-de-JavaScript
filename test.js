@@ -1,17 +1,27 @@
-function Animal() {
+class Account {
+  constructor(accountNumber, balance, name) {
+    this._accountNumber = accountNumber;
+    this._balance = balance;
+    this._name = name;
+  }
 
+  deposit(amount) {
+    this._balance += amount;
+  }
+
+  withdraw(quantity) {
+    if (quantity <= this._balance) {
+      this._balance -= quantity;
+    } else {
+      console.log("Saldo insuficiente");
+    }
+  }
+
+  getBalance() {
+    return this._balance;
+  }
 };
 
-Animal.prototype.especie = 'Canino';
+const myAccount = new Account("123456789", 1000, "Juan");
 
-function Perro() {
-
-};
-
-Perro.prototype = Object.create(Animal.prototype);
-Perro.prototype.ladrar = function () { console.log('Guauuu!') }
-
-const perro = new Perro();
-
-perro.ladrar();
-console.log(perro.especie)
+console.log(myAccount.balance);
