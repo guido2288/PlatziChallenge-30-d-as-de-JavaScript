@@ -1,8 +1,17 @@
-const objects = [{ name: 'John' }, { name: 'Jane' }, { name: 'Jim' }];
+function Animal() {
 
+};
 
-const allHaveName = objects.every(function (element) {
-  return element.hasOwnProperty('name');
-});
+Animal.prototype.especie = 'Canino';
 
-console.log(allHaveName);
+function Perro() {
+
+};
+
+Perro.prototype = Object.create(Animal.prototype);
+Perro.prototype.ladrar = function () { console.log('Guauuu!') }
+
+const perro = new Perro();
+
+perro.ladrar();
+console.log(perro.especie)
